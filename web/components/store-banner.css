@@ -1,0 +1,10 @@
+.store-banner-store-banner {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.store-banner-image {
+  width: 135px;
+  object-fit: cover;
+}

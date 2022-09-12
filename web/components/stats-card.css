@@ -1,0 +1,19 @@
+.stats-card-container {
+  width: 200px;
+  margin: var(--dl-space-space-unit);
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: row;
+}
+.stats-card-image {
+  width: 32px;
+  object-fit: cover;
+  margin-right: var(--dl-space-space-unit);
+}
+.stats-card-container1 {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
