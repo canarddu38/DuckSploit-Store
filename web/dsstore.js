@@ -59,11 +59,9 @@ function getappbyid()
 		
 		var link = document.getElementById("appdevurl");
         link.setAttribute('href', "./devprofile.html?id="+devuid);
+		
 		var link2 = document.getElementById("downloadbut");
-        link2.onclick()
-		{
-			downloadapk(apkurl);
-		}
+        link2.setAttribute('href', apkurl);
 		
 	})
 }
@@ -235,4 +233,16 @@ function search()
 				
 		})
 	}
+}
+function downloadfile(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
 }
