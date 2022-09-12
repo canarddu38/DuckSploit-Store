@@ -112,6 +112,7 @@ function search()
 	{
 		if (query.includes("game"))
 		{
+			document.getElementById("gamesbut").style.color = 'white';
 			fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
 			 .then(response => response.text())
 			 .then(data => {
@@ -135,26 +136,71 @@ function search()
 		}
 		else
 		{
-			fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
-			 .then(response => response.text())
-			 .then(data => {
-				var storelisting = data;
+			if (query.includes("all"))
+			{
+				var elem = document.getElementById("applist");
+				elem.parentNode.removeChild(elem);
+				var elem2 = document.getElementById("searchresult");
+				elem2.parentNode.removeChild(elem2);
 				
-				const map = new Map(Object.entries(JSON.parse(storelisting)));
-				map.forEach((_value, key) => {
-					const map2 = new Map(Object.entries(map.get(key)));
-					if (map2.get('apkCategory') == "application")
-					{
+				
+				document.getElementById("categoriesbut").style.color = 'white';
+				fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
+				 .then(response => response.text())
+				 .then(data => {
+					var storelisting = data;
+					
+					a = 0;
+					const categories = [];
+					
+					const map = new Map(Object.entries(JSON.parse(storelisting)));
+					map.forEach((_value, key) => {
+						const map2 = new Map(Object.entries(map.get(key)));
+						
+						if (categories[map2.get('category')] == undefined)
+						{
+							categories[map2.get('category')] = map2.get('category');
+							
+							document.getElementById("storecontainer").innerHTML += 
+							"<h1>"+map2.get('category')+"</h1>"
+							document.getElementById("storecontainer").innerHTML +=
+							"<div id='"+map2.get('category')+"' class='search-container4'></div>"
+						}
 						id=map2.get('shildkey');
 						imageurl=map2.get('icon');
 						title=map2.get('title');
 						url="./download.html?id="+id
-						document.getElementById("applist").innerHTML += 
+						document.getElementById(map2.get('category')).innerHTML += 
 						"<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
-					}
+						a++;
+					})
+					
 				})
-				
-			})
+			}
+			else
+			{
+				document.getElementById("appsbut").style.color = 'white';
+				fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
+				 .then(response => response.text())
+				 .then(data => {
+					var storelisting = data;
+					
+					const map = new Map(Object.entries(JSON.parse(storelisting)));
+					map.forEach((_value, key) => {
+						const map2 = new Map(Object.entries(map.get(key)));
+						if (map2.get('apkCategory') == "application")
+						{
+							id=map2.get('shildkey');
+							imageurl=map2.get('icon');
+							title=map2.get('title');
+							url="./download.html?id="+id
+							document.getElementById("applist").innerHTML += 
+							"<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
+						}
+					})
+					
+				})
+			}
 		}
 		document.getElementById("searchresult").innerHTML = "Result for '"+query.replace('?category=', '')+"'";
 	}
@@ -170,9 +216,9 @@ function search()
 			
 			const map = new Map(Object.entries(JSON.parse(storelisting)));
 			map.forEach((_value, key) => {
-				if (key.includes(input_search))
+				const map2 = new Map(Object.entries(map.get(key)));
+				if (map2.get('title').toLowerCase().includes(input_search.trim().toLowerCase()))
 				{
-					const map2 = new Map(Object.entries(map.get(key)));
 					id=map2.get('shildkey');
 					imageurl=map2.get('icon');
 					title=map2.get('title');
