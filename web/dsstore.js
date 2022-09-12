@@ -1,5 +1,6 @@
 function getallapps() 
 {
+	b = 0;
 	fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
 	 .then(response => response.text())
 	 .then(data => {
@@ -7,13 +8,17 @@ function getallapps()
 		
 		const map = new Map(Object.entries(JSON.parse(storelisting)));
 		map.forEach((_value, key) => {
-			const map2 = new Map(Object.entries(map.get(key)));
-			id=map2.get('shildkey');
-			imageurl=map2.get('icon');
-			title=map2.get('title');
-			url="./download.html?id="+id
-			document.getElementById("recentapps").innerHTML += 
-            "<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
+			if (b < 50)
+			{
+				const map2 = new Map(Object.entries(map.get(key)));
+				id=map2.get('shildkey');
+				imageurl=map2.get('icon');
+				title=map2.get('title');
+				url="./download.html?id="+id
+				document.getElementById("recentapps").innerHTML += 
+				"<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
+			}
+			b++;
 		})
 		
 	})

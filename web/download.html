@@ -70,7 +70,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <script src="./dsstore.js"></script>
-  <body onload="getappbyid()">
+  <body onload="getappbyid(), getallapps()">
     <div>
       <link href="./download.css" rel="stylesheet" />
 
@@ -251,45 +251,7 @@
               </div>
             </div>
             <h1>Recomanded apps</h1>
-            <div class="download-container8">
-              <div class="streapp-container streapp-root-class-name10">
-                <a
-                  href="https://ducksploit.com"
-                  
-                  rel="noreferrer noopener"
-                  class="streapp-link"
-                >
-                  <div class="streapp-container1">
-                    <img
-                      alt="image"
-                      src="https://ducksploit.com/assets/images/icon.png"
-                      class="streapp-image"
-                    />
-                    <span class="streapp-text"><span>app name</span></span>
-                  </div>
-                </a>
-              </div>
-              <a
-                href="./download"
-                class="download-link6"
-              >
-                <div class="streapp-container streapp-root-class-name11"></div>
-              </a>
-              <a
-                href="https://ducksploit.com"
-                
-                rel="noreferrer noopener"
-                class="streapp-link"
-              >
-                <div class="streapp-container1">
-                  <img
-                    alt="image"
-                    src="https://ducksploit.com/assets/images/icon.png"
-                    class="streapp-image"
-                  />
-                  <span class="streapp-text"><span>app name</span></span>
-                </div>
-              </a>
+            <div id="recentapps" class="download-container8">
             </div>
           </div>
         </div>
