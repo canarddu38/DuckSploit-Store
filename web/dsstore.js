@@ -61,27 +61,9 @@ function getappbyid()
         link.setAttribute('href', "./devprofile.html?id="+devuid);
 		
 		var link2 = document.getElementById("downloadbut");
-        link2.setAttribute('href', apkurl);
+		link2.setAttribute('href', apkurl);
 		
 	})
-}
-function downloadapk(apkurl)
-{
-	const documentName = "DSstore_apk.apk";
-
-	fetch(apkurl)
-	.then(res => {
-		return res.blob();
-	})
-	.then(blob => {
-		const href = window.URL.createObjectURL(blob);
-		const a = document.createElement("a");
-		a.download = documentName;
-		a.href = href;
-		a.click();
-		a.href = "";
-	  })
-	  .catch(err => console.error(err));
 }
 function getdevbyid() 
 {
