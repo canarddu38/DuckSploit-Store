@@ -133,7 +133,8 @@ an uncencored app store for android and now in your browser"
               </svg>
             </div>
             <input
-			  id="searchbox"
+			  id="searchbox" 
+onKeyDown="if(event.keyCode==13) gotosearch();"
               type="text"
               placeholder="search..."
               class="profile-textinput input"

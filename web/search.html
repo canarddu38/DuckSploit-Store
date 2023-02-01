@@ -82,7 +82,8 @@
               </svg>
             </div>
             <input
-			  id="searchbox"
+			  id="searchbox" 
+onKeyDown="if(event.keyCode==13) gotosearch();"
               type="text"
               placeholder="search..."
               class="search-textinput input"

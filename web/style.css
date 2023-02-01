@@ -33,8 +33,14 @@
   --dl-space-space-tripleunit: 3rem;
   --dl-color-turquoise-default: #2ec5ceff;
 }
-.teleport-show {
-  display: flex !important;
+h1 {
+	color: white;
+}
+span {
+	color: white;
+}
+a {
+	color: white;
 }
 .list {
   width: 100%;

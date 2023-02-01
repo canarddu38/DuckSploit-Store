@@ -1,7 +1,7 @@
 function getallapps() 
 {
 	b = 0;
-	fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
+	fetch('https://dsrestapi-default-rtdb.firebaseio.com/Store-Listing.json')
 	 .then(response => response.text())
 	 .then(data => {
 		var storelisting = data;
@@ -16,7 +16,7 @@ function getallapps()
 				title=map2.get('title');
 				url="./download.html?id="+id
 				document.getElementById("recentapps").innerHTML += 
-				"<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
+				"<a href='"+url+"' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
 			}
 			b++;
 		})
@@ -25,7 +25,7 @@ function getallapps()
 }
 function getappbyid() 
 {
-	fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
+	fetch('https://dsrestapi-default-rtdb.firebaseio.com/Store-Listing.json')
 	 .then(response => response.text())
 	 .then(data => {
 		var storelisting = data;
@@ -39,6 +39,14 @@ function getappbyid()
 		url="./download.html?id="+id
 		devname=map2.get('creator');
 		devuid=map2.get('uid');
+		fetch('https://dsrestapi-default-rtdb.firebaseio.com/Accounts.json')
+		 .then(response2 => response.text())
+		 .then(data2 => {
+			const map3233 = new Map(Object.entries(JSON.parse(data2)));
+			const map32334 = new Map(Object.entries(map3233.get(devuid)));
+			devname=map32334.get("name");
+		 });
+		
 		appdesc=map2.get('description');
 		apkurl=map2.get('APK');
 		
@@ -67,7 +75,7 @@ function getappbyid()
 }
 function getdevbyid() 
 {
-	fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Accounts.json')
+	fetch('https://dsrestapi-default-rtdb.firebaseio.com/Accounts.json')
 	 .then(response => response.text())
 	 .then(data => {
 		var storelisting = data;
@@ -98,7 +106,7 @@ function search()
 		if (query.includes("game"))
 		{
 			document.getElementById("gamesbut").style.color = 'white';
-			fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
+			fetch('https://dsrestapi-default-rtdb.firebaseio.com/Store-Listing.json')
 			 .then(response => response.text())
 			 .then(data => {
 				var storelisting = data;
@@ -113,7 +121,7 @@ function search()
 						title=map2.get('title');
 						url="./download.html?id="+id
 						document.getElementById("applist").innerHTML += 
-						"<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
+						"<a href='"+url+"' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
 					}
 				})
 				
@@ -130,7 +138,7 @@ function search()
 				
 				
 				document.getElementById("categoriesbut").style.color = 'white';
-				fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
+				fetch('https://dsrestapi-default-rtdb.firebaseio.com/Store-Listing.json')
 				 .then(response => response.text())
 				 .then(data => {
 					var storelisting = data;
@@ -156,7 +164,7 @@ function search()
 						title=map2.get('title');
 						url="./download.html?id="+id
 						document.getElementById(map2.get('category')).innerHTML += 
-						"<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
+						"<a href='"+url+"' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
 						a++;
 					})
 					
@@ -165,7 +173,7 @@ function search()
 			else
 			{
 				document.getElementById("appsbut").style.color = 'white';
-				fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
+				fetch('https://dsrestapi-default-rtdb.firebaseio.com/Store-Listing.json')
 				 .then(response => response.text())
 				 .then(data => {
 					var storelisting = data;
@@ -180,7 +188,7 @@ function search()
 							title=map2.get('title');
 							url="./download.html?id="+id
 							document.getElementById("applist").innerHTML += 
-							"<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
+							"<a href='"+url+"' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
 						}
 					})
 					
@@ -194,7 +202,7 @@ function search()
 		input_search = query.replace("?s=", "")
 		document.getElementById("searchresult").innerHTML = "Result for '"+input_search+"'";
 		
-		fetch('https://duckpvp-rpg-default-rtdb.firebaseio.com/Store-Listing.json')
+		fetch('https://dsrestapi-default-rtdb.firebaseio.com/Store-Listing.json')
 		 .then(response => response.text())
 		 .then(data => {
 			var storelisting = data;
@@ -209,7 +217,7 @@ function search()
 					title=map2.get('title');
 					url="./download.html?id="+id
 					document.getElementById("applist").innerHTML += 
-					"<a href='"+url+"' target='_blank' rel='noreferrer noopener' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
+					"<a href='"+url+"' class='streapp-link'><div class='streapp-container1'><img alt='image' src='"+imageurl+"' class='streapp-image'><span class='streapp-text'><span>"+title+"</span></span></div></a>";
 				}
 			})
 				
