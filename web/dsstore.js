@@ -66,6 +66,15 @@ function getappbyid()
 		document.getElementById("appdesc").innerHTML = appdesc;
 		
 		var link = document.getElementById("appdevurl");
+		
+		var titlemeta = document.createElement('meta');  
+		titlemeta.setAttribute('property', 'og:title');  titlemeta.content = "Download "+title+" - DuckSploit Store";
+		document.getElementsByTagName('head')[0].appendChild(titlemeta);
+		
+		var descmeta = document.createElement('meta');  
+		descmeta.setAttribute('property', 'og:title');  descmeta.content = "Download "+title+" android apk on DuckSploit Store";
+		document.getElementsByTagName('head')[0].appendChild(descmeta);
+		
 		document.title = "Download "+title+" - DuckSploit Store";
 		document.querySelector('meta[name="title"]').setAttribute("content", "Download "+title+" - DuckSploit Store");
 		document.querySelector('meta[name="description"]').setAttribute("content", "Download "+title+" android apk on DuckSploit Store");
