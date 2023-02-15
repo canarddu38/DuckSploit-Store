@@ -66,6 +66,9 @@ function getappbyid()
 		document.getElementById("appdesc").innerHTML = appdesc;
 		
 		var link = document.getElementById("appdevurl");
+		document.title = "Download "+title+" - DuckSploit Store";
+		document.querySelector('meta[name="title"]').setAttribute("content", "Download "+title+" - DuckSploit Store");
+		document.querySelector('meta[name="description"]').setAttribute("content", "Download "+title+" android apk on DuckSploit Store");
         link.setAttribute('href', "./devprofile.html?id="+devuid);
 		
 		var link2 = document.getElementById("downloadbut");
