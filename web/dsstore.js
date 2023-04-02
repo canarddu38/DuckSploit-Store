@@ -126,7 +126,7 @@ function search()
 				const map = new Map(Object.entries(JSON.parse(storelisting)));
 				map.forEach((_value, key) => {
 					const map2 = new Map(Object.entries(map.get(key)));
-					if (map2.get('apkCategory') == "game")
+					if (map2.get('apkCategory') == "game" || map2.get('apkCategory') == "jogo")
 					{
 						id=map2.get('shildkey');
 						imageurl=map2.get('icon');
@@ -193,7 +193,7 @@ function search()
 					const map = new Map(Object.entries(JSON.parse(storelisting)));
 					map.forEach((_value, key) => {
 						const map2 = new Map(Object.entries(map.get(key)));
-						if (map2.get('apkCategory') == "application")
+						if (map2.get('apkCategory') == "application" || map2.get('apkCategory') == "aplicativo")
 						{
 							id=map2.get('shildkey');
 							imageurl=map2.get('icon');
